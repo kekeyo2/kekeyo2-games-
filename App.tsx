@@ -20,6 +20,12 @@ const EXTERNAL_GAMES = [
     description: 'High-speed tactical operations and diverse gaming sectors.'
   },
   {
+    id: 'portal-11',
+    name: 'Sub-VCSA Relay',
+    url: 'https://sub-vcsa.dinprima.ro/',
+    description: 'A dedicated sub-sector terminal for advanced data processing and tactical coordination.'
+  },
+  {
     id: 'portal-4',
     name: 'Temporal Nexus',
     url: 'http://one.thousand.eight.hundred.fifty.five.days.dimitriecantemir.ro/',
@@ -45,9 +51,9 @@ const EXTERNAL_GAMES = [
   },
   {
     id: 'portal-8',
-    name: 'Lready Portal (code is funni)',
+    name: 'Lready Portal',
     url: 'https://login.lready.top/signin.html',
-    description: 'Secure gateway to the Lready network. Note: Code is indeed funni.'
+    description: 'Secure gateway to the Lready network.'
   },
   {
     id: 'portal-9',
