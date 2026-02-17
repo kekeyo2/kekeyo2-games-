@@ -1,11 +1,15 @@
-
 import { GoogleGenAI } from "@google/genai";
-
-// Initialize the GoogleGenAI client using the API key strictly from process.env.API_KEY.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateGameAdvice = async (history: { role: 'user' | 'model'; text: string }[]) => {
   try {
+    // Safety check for API key in browser environment
+    const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : '';
+    if (!apiKey) {
+      console.warn("API Key missing. Gemini service is offline.");
+      return "The cosmic data streams are offline (API Key Missing). Contact command center.";
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: history.map(h => ({ 
@@ -18,7 +22,7 @@ export const generateGameAdvice = async (history: { role: 'user' | 'model'; text
         topP: 0.95,
       }
     });
-    // Use the .text property directly instead of as a method to get the content string.
+    
     return response.text;
   } catch (error) {
     console.error("Gemini API Error:", error);
